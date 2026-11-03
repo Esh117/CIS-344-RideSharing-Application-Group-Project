@@ -90,3 +90,6 @@ The `docs/` folder contains the project report, Chen-style ER diagram, UML-style
 ## Author
 
 Eshwar Basdeo
+
+## YouTube Recording Video:
+https://youtu.be/pn98cWfdy3o
