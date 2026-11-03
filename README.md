@@ -1,70 +1,92 @@
-# RideConnect — CIS 344 Project
+# RideConnect — Ride-Sharing Application
 
-RideConnect is my project created using PHP, MySQL, HTML, and CSS ride-sharing demo.
+## Project Overview
 
-## The Features
-- Passenger and driver registration and login
-- Password hashing and PHP sessions
-- Driver profile and availability
-- Ride requests and example fare calculation ($3 base + $2 per mile)
-- Drivers accept and complete rides
-- Simulated payment status (no real card data)
-- Ride history and SQL joins
+RideConnect is my project ride-sharing application developed for the Ride-Sharing Application Group Project. The system allows passengers to register, log in, request rides, and view their ride information. Drivers can manage their driver information and respond to ride requests.
 
-## The Requirements
-- PHP 8 or newer with PDO MySQL enabled
-- MySQL 8 or compatible MariaDB
-- XAMPP, MAMP, or another local PHP/MySQL environment
-- Web browser
+The project demonstrates how a PHP application connects to a relational database using MySQL/MariaDB.
 
-## Setting up using XAMPP
-1. Install and open XAMPP.
-2. Start **Apache** and **MySQL**.
-3. Copy the `RideConnect` folder into XAMPP's `htdocs` folder.
-4. Open `http://localhost/phpmyadmin`.
-5. Choose the **Import** tab and import `database/rideconnect.sql`.
-6. Open `config/database.php` and set the MySQL username and password for your machine.
-7. Visit `http://localhost/RideConnect/`.
-8. Register a passenger account and log in.
-9. Register a separate driver account; complete the driver profile form.
-10. Log in as passenger, request a ride, then log in as driver in another browser/private window to accept and complete it.
-11. Log back in as passenger and use **Demo pay** after the ride is completed.
+## Technologies Used
 
-## Fare formula
-The demo uses a the notion where: fare = $3.00 + ($2.00 × distance in miles). This is just an assumption, not a real-world pricing.
+- PHP — server-side processing
+- HTML — application structure
+- CSS — styling and page layout
+- JavaScript — client-side functionality, where used
+- MySQL/MariaDB — database management
+- XAMPP — local development environment
+- MySQL Workbench — database modeling and ER diagram
 
-## Database
-Import `database/rideconnect.sql`. The main relationships are:
-- `users` one-to-zero-or-one `drivers`
-- `users` one-to-many `rides` as passengers
-- `drivers` one-to-many `rides`
-- `rides` one-to-zero-or-one `payments`
+## Main Features
 
-Additional join examples are in `database/joins_examples.sql`.
+- User registration and login
+- Passenger and driver roles
+- Ride requests
+- Driver profiles and ride assignment
+- Ride status management
+- Payment status demonstration
+- Database queries using SQL JOIN operations
 
-## Security notes
-- Passwords are stored with `password_hash()` and checked with `password_verify()`.
-- SQL values from forms use PDO prepared statements.
-- Output displayed in HTML is escaped with `htmlspecialchars()`.
-- Forms validate required fields and data types.
-- Payment is simulated only. Do not enter real payment-card information.
-- Before public or production use, add CSRF tokens, rate limiting, stronger logging, secure cookie settings, and a real payment provider integration.
+Only describe features that are actually implemented and working in your application.
 
-## Suggested Git commits
-- `Initial RideConnect project structure`
-- `Add MySQL schema and join examples`
-- `Add registration and login`
-- `Add passenger ride booking and fare calculation`
-- `Add driver availability and ride workflow`
-- `Add styling and project documentation`
+## Database Design
 
-## Test checklist
-- Register a passenger with a valid email and 8+ character password.
-- Attempt to register the same email twice; it should be rejected.
-- Log in with correct and incorrect passwords.
-- Request a ride with a valid distance.
-- Try a blank location or invalid distance.
-- Log in as driver, mark available, accept a ride, and complete it.
-- Confirm the ride and payment statuses update.
-- Verify ride history shows passenger, driver, fare, and status.
-- Run the queries in `database/joins_examples.sql` in phpMyAdmin.
+The database is named `rideconnect` and contains these tables:
+
+- `users` — stores user account information and roles
+- `drivers` — stores driver and vehicle information
+- `rides` — stores passenger ride requests, assigned drivers, and ride statuses
+- `payments` — stores payment records and payment statuses
+
+The SQL scripts are located in the `database/` folder.
+
+## Project Folder Structure
+
+- `assets/` — CSS, JavaScript, and other front-end assets
+- `config/` — database configuration
+- `database/` — database creation and query scripts
+- `docs/` — ER diagrams, report, and user guide
+- `includes/` — reusable PHP components
+- Root PHP files — application pages and functionality
+
+## Installation and Setup
+
+1. Install XAMPP.
+2. Start Apache and MySQL/MariaDB from the XAMPP Control Panel.
+3. Copy the RideConnect project folder into `C:\xampp\htdocs\`.
+4. Open phpMyAdmin at `http://localhost/phpmyadmin`.
+5. Create or import the `rideconnect` database using `database/rideconnect_schema.sql`.
+6. Configure your local database connection using `config/database.example.php` as a reference.
+7. Open the application at `http://localhost/RideConnect/`.
+
+## Testing the Application
+
+1. Register a passenger account.
+2. Log in as the passenger.
+3. Submit a ride request.
+4. Register or configure a driver account.
+5. Log in as the driver and test the ride-assignment workflow.
+6. Test the ride status and payment demonstration, if implemented.
+7. Review the database records and execute the SQL JOIN examples.
+
+## Security
+
+The application should validate and sanitize user input and use prepared statements for database queries to help prevent SQL injection. Do not upload passwords or private credentials to this public repository.
+
+## Project Documentation
+
+The `docs/` folder contains the project report, Chen-style ER diagram, UML-style ER diagram, and user guide.
+
+## Demonstration Video
+
+[Insert the link to the RideConnect demonstration video here.]
+
+## Course Information
+
+**Course:** CIS 344  
+**Semester:** Fall 2026  
+**Project:** RideConnect — Ride-Sharing Application  
+**Instructor:** Prof. Yanilda Peralta Ramos
+
+## Author
+
+Eshwar Basdeo
